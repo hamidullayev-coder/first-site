@@ -7,6 +7,7 @@
 
 body{
     background-color: white;
+    margin: 0;
 }
 #p1{
     color: rgb(63, 196, 196);
@@ -15,7 +16,6 @@ body{
     font-weight: 400;
     font-style: italic;
 }
-
 
 .header{
     width: 100%;
@@ -70,4 +70,71 @@ body{
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
+}
+
+.box{
+    text-align: center;
+    padding: 5px;
+    border: 4px solid;
+    font-size: 5 em;
+    width: 250px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    display: inline-flex;
+    margin-left: 30px;
+}
+
+#box5{
+border-top-color: white;
+border-style: hidden;
+}
+
+#img1{
+    margin-left: 20px;
+    float: right;
+    border: 250px;
+    
+}
+
+#info{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    appearance: none;
+}
+
+#box9{
+    border: 3px solid;
+    display: flow-root;
+    overflow: auto;
+
+}
+#back{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 3px solid;
+    border-color: white;
+    background-image: url(pictures/background-image.jfif);
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0;
+}
+.pagination{
+    text-align: center;
+
+}
+.pagination a{
+    color: #101010;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: inline-block;
+}
+.pagination a.active{
+    background-color: aquamarine;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.pagination a:hover:not(.active){
+    background-color: bisque;
+    border-radius: 5px;
 }

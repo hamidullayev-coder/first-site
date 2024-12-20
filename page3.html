@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman Animation</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; }
+    </style>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <canvas id="batmanCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('batmanCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Logo properties
+        const logoWidth = 150;
+        const logoHeight = 80;
+        let logoX = -logoWidth;  // Start off-screen
+        let logoSpeed = 3;       // Horizontal speed
+        const floatAmplitude = 20;  // Vertical oscillation amplitude
+        const floatFrequency = 0.05; // Oscillation frequency
+
+        // Function to draw the Batman logo
+        function drawBatmanLogo(x, y) {
+            ctx.fillStyle = '#FFD700';
+            // Draw yellow ellipse
+            ctx.beginPath();
+            ctx.ellipse(x, y, logoWidth / 2, logoHeight / 2, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw bat shape inside the ellipse
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.moveTo(x - logoWidth * 0.3, y);               // Left wing tip
+            ctx.lineTo(x, y - logoHeight * 0.25);            // Top of head
+            ctx.lineTo(x + logoWidth * 0.3, y);               // Right wing tip
+            ctx.lineTo(x, y + logoHeight * 0.35);             // Bottom of tail
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas
+            
+            // Calculate oscillating y position to simulate floating
+            const floatY = floatAmplitude * Math.sin(floatFrequency * logoX);
+            const logoY = canvas.height / 2 + floatY;
+            
+            // Update position
+            logoX += logoSpeed;
+
+            // Wrap the logo back to the start when it goes off-screen
+            if (logoX > canvas.width + logoWidth) {
+                logoX = -logoWidth;
+            }
+
+            // Draw the Batman logo
+            drawBatmanLogo(logoX, logoY);
+
+            // Loop the animation
+            requestAnimationFrame(animate);
+        }
+
+        // Start the animation
+        animate();
+
+        // Adjust canvas size on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+    <br><br><br>
+    
+
+<div class="pagination">
+    <a href=""><</a>
+    <a href="index.html" class="active">1</a>
+    <a href="page2.html">2</a>
+    <a href="page3.html">3</a>
+  <a href="">></a>
+  </div>
+</body>
+</html>
